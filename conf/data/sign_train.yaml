@@ -1,0 +1,8 @@
+# @package _global_
+data_loader:
+  _target_: srcs.data_loader.data_loaders.get_sign_dataloader
+  path_train: ./data/sign_language_dataset_train.pt
+  path_val: ./data/sign_language_dataset_val.pt
+  batch_size: ${batch_size}
+  shuffle: true
+  num_workers: ${n_cpu}
