@@ -1,5 +1,10 @@
-.run/
+run/
+tensorboard/
+config.yaml
 data/sign_language_dataset/
+data/sign_language_dataset_train/
+data/sign_language_dataset_test/
+data/sign_language_dataset_val
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

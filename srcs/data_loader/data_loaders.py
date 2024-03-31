@@ -1,3 +1,4 @@
+import pickle
 from pathlib import Path
 from typing import List
 
@@ -5,6 +6,7 @@ import cv2
 import numpy as np
 import torch
 from torch.utils.data import DataLoader, Dataset
+from torchvision import datasets
 
 
 class SignDataset(Dataset):
@@ -32,6 +34,11 @@ def get_sign_dataloader(
     ):
     train_dataset = SignDataset(paths=[*Path(path_train).rglob('*.jpg')])
     val_dataset = SignDataset(paths=[*Path(path_val).rglob('*.jpg')])
+    # print("STARTED")
+    # train_dataset = pickle.load(open(path_train, "rb"))
+    # val_dataset = pickle.load(open(path_val, "rb"))
+    # print("Number of training samples: ", len(train_dataset))
+    # print("Number of validation samples: ", len(val_dataset))
 
     loader_args = {
         'batch_size': batch_size,
@@ -45,6 +52,8 @@ def get_sign_test_dataloader(
         path_test, batch_size, num_workers=1,
     ):
     test_dataset = SignDataset(paths=[*Path(path_test).rglob('*.jpg')])
+    # test_dataset = pickle.load(open(path_test, "rb"))
+    # print("Number of test samples: ", len(test_dataset))
 
     loader_args = {
         'batch_size': batch_size,
