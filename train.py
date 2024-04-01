@@ -5,6 +5,8 @@ from omegaconf import OmegaConf
 from pathlib import Path
 from srcs.trainer import Trainer
 from srcs.utils import instantiate, get_logger, is_master
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # fix random seeds for reproducibility
 SEED = 123
