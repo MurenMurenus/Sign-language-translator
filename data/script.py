@@ -3,6 +3,7 @@ import pickle
 import cv2
 
 import torch
+from torch.utils.data import random_split
 from torchvision import datasets
 
 
@@ -10,11 +11,10 @@ def main():
     DATA_DIR = 'sign_language_dataset'
     dataset = datasets.ImageFolder(DATA_DIR)
 
-    train_size = int(0.6 * len(dataset))
-    test_size = int(0.2 * len(dataset))
-    val_size = int(0.2 * len(dataset))
-
-    train_data, test_data, val_data = torch.utils.data.random_split(dataset, [train_size, test_size, val_size])
+    proportions = [.6, .2, .2]
+    lengths = [int(p * len(dataset)) for p in proportions]
+    lengths[-1] = len(dataset) - sum(lengths[:-1])
+    train_data, test_data, val_data = torch.utils.data.random_split(dataset, lengths)
 
     print(len(train_data))
     print(len(test_data))
