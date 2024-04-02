@@ -32,34 +32,37 @@ def main():
     iterr = 0
     for item in train_data:
         img, cls = item
+        class_name = dataset.classes[cls]
         if iterr % 1000 == 0:
             print("Train:", iterr)
 
-        if not os.path.exists(f'{DATA_DIR}_train/{cls}'):
-            os.makedirs(f'{DATA_DIR}_train/{cls}')
-        img.save(f'{DATA_DIR}_train/{cls}/{cls}{iterr}.jpg')
+        if not os.path.exists(f'{DATA_DIR}_train/{class_name}'):
+            os.makedirs(f'{DATA_DIR}_train/{class_name}')
+        img.save(f'{DATA_DIR}_train/{class_name}/{class_name}{iterr}.jpg')
         iterr += 1
 
     iterr = 0
     for item in test_data:
         img, cls = item
+        class_name = dataset.classes[cls]
         if iterr % 1000 == 0:
             print("Test:", iterr)
 
-        if not os.path.exists(f'{DATA_DIR}_test/{cls}'):
-            os.makedirs(f'{DATA_DIR}_test/{cls}')
-        img.save(f'{DATA_DIR}_test/{cls}/{cls}{iterr}.jpg')
+        if not os.path.exists(f'{DATA_DIR}_test/{class_name}'):
+            os.makedirs(f'{DATA_DIR}_test/{class_name}')
+        img.save(f'{DATA_DIR}_test/{class_name}/{class_name}{iterr}.jpg')
         iterr += 1
 
     iterr = 0
     for item in val_data:
         img, cls = item
+        class_name = dataset.classes[cls]
         if iterr % 1000 == 0:
             print("Val:", iterr)
 
-        if not os.path.exists(f'{DATA_DIR}_val/{cls}'):
-            os.makedirs(f'{DATA_DIR}_val/{cls}')
-        img.save(f'{DATA_DIR}_val/{cls}/{cls}{iterr}.jpg')
+        if not os.path.exists(f'{DATA_DIR}_val/{class_name}'):
+            os.makedirs(f'{DATA_DIR}_val/{class_name}')
+        img.save(f'{DATA_DIR}_val/{class_name}/{class_name}{iterr}.jpg')
         iterr += 1
 
 
