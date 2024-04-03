@@ -12,7 +12,7 @@ class SignDataset(Dataset):
         self.paths = paths
         self.transform = transform # если есть аугментации
 
-        labels = sorted(set(str(x).split('/')[-2] for x in paths))
+        labels = sorted(set(str(x).split('\\')[-2] for x in paths))
         self.one_hot_encoding = {label: i for i, label in enumerate(labels)}
 
     def __len__(self):
@@ -20,7 +20,7 @@ class SignDataset(Dataset):
 
     def __getitem__(self, idx):
         image = cv2.imread(str(self.paths[idx]))
-        label = str(self.paths[idx]).split('/')[-2]
+        label = str(self.paths[idx]).split('\\')[-2]
         image = cv2.resize(image, (200, 200))
         image = np.transpose(image, (2, 0, 1))
 
@@ -30,8 +30,8 @@ class SignDataset(Dataset):
 def get_sign_dataloader(
         path_train, path_val, batch_size, shuffle=True, num_workers=1,
     ):
-    train_dataset = SignDataset(paths=[*Path(path_train).rglob('*.jpg')])
-    val_dataset = SignDataset(paths=[*Path(path_val).rglob('*.jpg')])
+    train_dataset = SignDataset(paths=[*Path('./data').rglob('*.jpg')])
+    val_dataset = SignDataset(paths=[*Path('./data').rglob('*.jpg')])
 
     loader_args = {
         'batch_size': batch_size,

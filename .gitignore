@@ -1,5 +1,7 @@
 .run/
 data/sign_language_dataset/
+data/sign_language_dataset.zip
+tensorboard
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
