@@ -1,6 +1,4 @@
 import os
-import torch
-from torch.utils.data import random_split
 from torchvision import datasets
 
 DATA_DIR_OUT = 'sign_language_dataset'
