@@ -12,7 +12,7 @@ metrics:
 defaults:
   - _self_
   - data: sign_train
-  - model: mobilenet
+  - model: efficientnet
   - hparams: linear_baseline
 
   - status: train

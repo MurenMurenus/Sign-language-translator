@@ -1,7 +1,7 @@
 # @package _global_
-name: MobilenetV3Small
+name: EfficientNetB0
 arch:
-  _target_: srcs.model.model.get_mobilenet_model
+  _target_: srcs.model.model.get_efficientnet_model
   num_classes: 29
 loss:
   _target_: srcs.model.loss.cross_entropy_loss

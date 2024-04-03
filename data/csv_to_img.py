@@ -22,7 +22,7 @@ for i in range(len(image_names)):
     image = Image.fromarray(image_data)
 
     image_name = str(int(image_names[i]))
-    image_name_iter = str(int(image_names[i]))+str(iter) + '_mnist.png'
+    image_name_iter = str(int(image_names[i]))+str(iter) + '_mnist.jpg'
     if not os.path.exists(f'sign_language_dataset/{labels[int(image_name)]}'):
         os.makedirs(f'sign_language_dataset/{labels[int(image_name)]}')
     image.save(f'sign_language_dataset/{labels[int(image_name)]}/{labels[int(image_name)]}{image_name_iter}')

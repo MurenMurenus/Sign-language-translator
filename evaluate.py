@@ -8,7 +8,6 @@ from srcs.utils import instantiate
 
 logger = logging.getLogger('evaluate')
 
-
 @hydra.main(version_base=None,config_path='conf', config_name='evaluate')
 def main(config):
     logger.info('Loading checkpoint: {} ...'.format(config.checkpoint))
@@ -44,13 +43,9 @@ def main(config):
         for i, (data, target) in enumerate(tqdm(data_loader)):
             data, target = data.to(device), target.to(device)
             output = model(data)
-
-            #
-            # save sample images, or do something with output here
-            #
-
             # computing loss, metrics on test set
             metric_output = output.argmax(dim=1)
+            print("Predicted class: ", metric_output)
 
             loss = criterion(output, target)
             batch_size = data.shape[0]
