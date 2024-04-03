@@ -1,7 +1,4 @@
 import os
-import pickle
-import cv2
-
 import torch
 from torch.utils.data import random_split
 from torchvision import datasets
