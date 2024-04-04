@@ -1,0 +1,51 @@
+{
+  "update_id": 84238606,
+  "message": {
+    "message_id": 44,
+    "from": {
+      "id": 953480953,
+      "is_bot": False,
+      "first_name": "Игорь",
+      "username": "einbesserwisser",
+      "language_code": "ru",
+      "is_premium": True
+    },
+    "chat": {
+      "id": 953480953,
+      "first_name": "Игорь",
+      "username": "einbesserwisser",
+      "type": "private"
+    },
+    "date": 1712253477,
+    "photo": [
+      {
+        "file_id": "AgACAgIAAxkBAAMsZg7qJVSiAg2DOBwmKy1hrRKhYcQAArjbMRs8BnlIN0JFeDVopmkBAAMCAANzAAM0BA",
+        "file_unique_id": "AQADuNsxGzwGeUh4",
+        "file_size": 975,
+        "width": 90,
+        "height": 69
+      },
+      {
+        "file_id": "AgACAgIAAxkBAAMsZg7qJVSiAg2DOBwmKy1hrRKhYcQAArjbMRs8BnlIN0JFeDVopmkBAAMCAANtAAM0BA",
+        "file_unique_id": "AQADuNsxGzwGeUhy",
+        "file_size": 15951,
+        "width": 320,
+        "height": 244
+      },
+      {
+        "file_id": "AgACAgIAAxkBAAMsZg7qJVSiAg2DOBwmKy1hrRKhYcQAArjbMRs8BnlIN0JFeDVopmkBAAMCAAN4AAM0BA",
+        "file_unique_id": "AQADuNsxGzwGeUh9",
+        "file_size": 67783,
+        "width": 800,
+        "height": 610
+      },
+      {
+        "file_id": "AgACAgIAAxkBAAMsZg7qJVSiAg2DOBwmKy1hrRKhYcQAArjbMRs8BnlIN0JFeDVopmkBAAMCAAN5AAM0BA",
+        "file_unique_id": "AQADuNsxGzwGeUh-",
+        "file_size": 114499,
+        "width": 1218,
+        "height": 928
+      }
+    ]
+  }
+}
