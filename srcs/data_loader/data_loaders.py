@@ -3,6 +3,7 @@ from typing import List
 
 import cv2
 import numpy as np
+import mediapipe as mp
 import torch
 from torch.utils.data import DataLoader, Dataset
 from torchvision import datasets
@@ -14,6 +15,10 @@ class SignDataset(Dataset):
         self.paths = paths
         self.transform = transform # если есть аугментации
 
+        self.mp_hands = mp.solutions.hands
+        self.mp_drawing = mp.solutions.drawing_utils
+        self.mp_drawing_styles = mp.solutions.drawing_styles
+
         labels = sorted(set(str(x).split('/')[-2] for x in paths))
         self.one_hot_encoding = {label: i for i, label in enumerate(labels)}
 
@@ -23,6 +28,22 @@ class SignDataset(Dataset):
     def __getitem__(self, idx):
         image = cv2.imread(str(self.paths[idx]))
         label = str(self.paths[idx]).split('/')[-2]
+        with self.mp_hands.Hands(
+                static_image_mode=True,
+                max_num_hands=2,
+                min_detection_confidence=0.2) as hands:
+            results = hands.process(cv2.flip(image, 1))
+            if results.multi_hand_landmarks:
+                annotated_image = cv2.flip(image.copy(), 1)
+                for hand_landmarks in results.multi_hand_landmarks:
+                    self.mp_drawing.draw_landmarks(
+                        annotated_image,
+                        hand_landmarks,
+                        self.mp_hands.HAND_CONNECTIONS,
+                        self.mp_drawing_styles.get_default_hand_landmarks_style(),
+                        self.mp_drawing_styles.get_default_hand_connections_style())
+                image = cv2.flip(annotated_image, 1)
+
         image = cv2.resize(image, (200, 200))
         image = np.transpose(image, (2, 0, 1))
 
