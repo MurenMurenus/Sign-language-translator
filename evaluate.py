@@ -27,6 +27,9 @@ def main(config):
     state_dict = checkpoint['state_dict']
     model.load_state_dict(state_dict)
 
+    # if you need to transform pth to pt, you can use it
+    # torch.save(model.state_dict(), 'saved.pt')
+
     # instantiate loss and metrics
     criterion = instantiate(loaded_config.loss, is_func=True)
     metrics = [instantiate(met, is_func=True) for met in loaded_config.metrics]

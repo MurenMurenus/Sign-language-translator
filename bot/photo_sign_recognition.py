@@ -8,7 +8,18 @@ def photo_sign_recognition(path: str) -> str:
     model = get_trained_model('saved.pt')
     classes = "abcdefghijklmnopqrstuvwhyz*? "
 
-    image = cv2.imread(path)
+    frame = cv2.imread(path)
+    max_side = max(frame.shape[0:2])
+    old_image_height, old_image_width, channels = frame.shape
+    color = (255, 255, 255)
+
+    padded = np.full((max_side, max_side, channels), color, dtype=np.uint8)
+
+    # copy img image into center of result image
+    padded[0:old_image_height,
+    0:old_image_width] = frame
+
+    image = cv2.resize(padded, (200, 200))
     image = cv2.resize(image, (200, 200))
     image = np.transpose(image, (2, 0, 1))
 

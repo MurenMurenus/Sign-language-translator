@@ -35,6 +35,8 @@ def download_media(bot, message, download_path=None) -> str:
         file_id = message["photo"][1]['file_id']
     elif "video" in message:
         file_id = message["video"]['file_id']
+    elif "video_note" in message:
+        file_id = message["video_note"]['file_id']
     else:
         return ""
     media_path, downloaded_media = bot.get_media(file_id)
@@ -55,6 +57,7 @@ def receive_update():
         uid = message["from"]["id"]
         messages = ["/start"]
 
+        # print(message)
         # Start command
         if "entities" in message and message["text"] == "/start" and message["entities"][0]["type"] == "bot_command":
             bot.send_message(chat_id, 'Hi! Send me your photo or video!')
@@ -62,7 +65,6 @@ def receive_update():
             try:
                 target_path = download_media(bot, message)
                 print(target_path)
-                # TODO сделать ответ бота на фотку
                 result = photo_sign_recognition(target_path)
                 bot.send_message(chat_id, f'Распознанный символ: {result}')
             except Exception as e:
@@ -72,7 +74,15 @@ def receive_update():
             try:
                 target_path = download_media(bot, message)
                 print(target_path)
-                # TODO сделать ответ бота на видео
+                result = video_sign_recognition(target_path)
+                bot.send_message(chat_id, f'Распознанный текст: {result}')
+            except Exception as e:
+                print(traceback.format_exc())
+                bot.send_message(chat_id, 'An error occurred, please try again!')
+        elif "video_note" in message:
+            try:
+                target_path = download_media(bot, message)
+                print(target_path)
                 result = video_sign_recognition(target_path)
                 bot.send_message(chat_id, f'Распознанный текст: {result}')
             except Exception as e:
