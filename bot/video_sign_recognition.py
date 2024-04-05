@@ -2,14 +2,13 @@ import torch
 import cv2
 import numpy as np
 from init_model import get_trained_model
-#import torch.nn.functional as TF
+
 
 def video_sign_recognition(path: str) -> str:
     model = get_trained_model('saved.pt')
     classes = "abcdefghijklmnopqrstuvwhyz*? "
-    confidence = 0.8
-    check_freq = 20
-
+    confidence = 0.82
+    check_freq = 30
     cap = cv2.VideoCapture(path)
 
     num_frames = 1
