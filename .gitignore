@@ -10,6 +10,8 @@ bot/bot_data/photos/*
 !bot/bot_data/photos/.gitkeep
 bot/bot_data/videos/*
 !bot/bot_data/videos/.gitkeep
+bot/bot_data/video_notes/*
+!bot/bot_data/video_notes/.gitkeep
 bot/bot_data/temp_files
 *.zip
 # Byte-compiled / optimized / DLL files
