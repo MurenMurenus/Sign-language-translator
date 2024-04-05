@@ -3,13 +3,12 @@ from pathlib import Path
 from pyngrok import ngrok
 from flask import Flask, request
 
-from bot.photo_sign_recognition import photo_sign_recognition
+from photo_sign_recognition import photo_sign_recognition
 from tg_bot import Bot
 
 
 port = '5000'
-# ngrok_token = "2edsh9l016jCR72oIlnzGIlXTfi_2MymbkrbwJfKyMLrq6nCj"
-ngrok_token = '7192759256:AAELRCpb0LSys8NoAUYyEaCwWpbJL5rrPdw'
+ngrok_token = "2edsh9l016jCR72oIlnzGIlXTfi_2MymbkrbwJfKyMLrq6nCj"
 
 # Setting an auth token allows us to open multiple tunnels at the same time
 ngrok.set_auth_token(ngrok_token)
