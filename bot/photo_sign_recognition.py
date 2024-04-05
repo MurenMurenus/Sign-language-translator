@@ -6,7 +6,7 @@ from init_model import get_trained_model
 
 def photo_sign_recognition(path: str) -> str:
     model = get_trained_model('saved.pt')
-    classes = "abcdefghijklmnopqrstuvwhyz"
+    classes = "abcdefghijklmnopqrstuvwhyz*? "
 
     image = cv2.imread(path)
     image = cv2.resize(image, (200, 200))
@@ -16,9 +16,24 @@ def photo_sign_recognition(path: str) -> str:
     image = torch.tensor(image).float()
     with torch.no_grad():
         predict = model(image.unsqueeze(0))
-    predicted_class = np.argmax(predict)
+    predicted_class = torch.nn.functional.softmax(predict, dim=-1).max(1)
 
-    return classes[predicted_class.item()]
+    # predicted_class = np.argmax(predict)
+    print(predicted_class)
+
+    if predicted_class.values[0] < 0.5:
+        return "Cannot recognize: I'm not sure about the result, try again"
+
+    num_class = predicted_class.indices[0]
+    sign = classes[num_class]
+
+    if sign == '*':
+        return 'delete'
+    elif sign == '?':
+        return 'nothing'
+    elif sign == ' ':
+        return 'space'
+    return sign
 
 
 if __name__ == '__main__':
