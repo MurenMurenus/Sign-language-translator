@@ -3,11 +3,13 @@ from pathlib import Path
 from pyngrok import ngrok
 from flask import Flask, request
 
+from bot.photo_sign_recognition import photo_sign_recognition
 from tg_bot import Bot
 
 
 port = '5000'
-ngrok_token = "2edsh9l016jCR72oIlnzGIlXTfi_2MymbkrbwJfKyMLrq6nCj"
+# ngrok_token = "2edsh9l016jCR72oIlnzGIlXTfi_2MymbkrbwJfKyMLrq6nCj"
+ngrok_token = '7192759256:AAELRCpb0LSys8NoAUYyEaCwWpbJL5rrPdw'
 
 # Setting an auth token allows us to open multiple tunnels at the same time
 ngrok.set_auth_token(ngrok_token)
@@ -57,9 +59,11 @@ def receive_update():
             bot.send_message(chat_id, 'Hi! Send me your photo or video!')
         elif "photo" in message:
             try:
-                print(download_media(bot, message))
+                target_path = download_media(bot, message)
+                print(target_path)
                 # TODO сделать ответ бота на фотку
-                bot.send_message(chat_id, 'Я что-то предсказал!')
+                result = photo_sign_recognition(target_path)
+                bot.send_message(chat_id, f'Распознанный символ: {result}')
             except Exception as e:
                 print(traceback.format_exc())
                 bot.send_message(chat_id, 'An error occurred, please try again!')

@@ -1,7 +1,6 @@
-import torchvision
+from efficientnet_pytorch import EfficientNet
 
 
-def get_mobilenet_model(num_classes: int = 29):
-    model = torchvision.models.mobilenet_v3_small(weights=torchvision.models.mobilenet.MobileNet_V3_Small_Weights)
-    model.classifier[-1].out_features = num_classes
+def get_efficientnet_model(num_classes: int = 29):
+    model = EfficientNet.from_pretrained('efficientnet-b0', num_classes=num_classes)
     return model
