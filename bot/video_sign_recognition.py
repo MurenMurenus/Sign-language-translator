@@ -13,6 +13,7 @@ def video_sign_recognition(path: str) -> str:
     num_frames = 1
     answer = ""
     previous_sign = ""
+    sign = ""
 
     while True:
         ret, frame = cap.read()
@@ -28,12 +29,11 @@ def video_sign_recognition(path: str) -> str:
             with torch.no_grad():
                 predict = model(image.unsqueeze(0))
 
-            print(predict)
             #predicted_class = TF.softmax(predict)
             predicted_class = np.argmax(predict)
 
             num_class = predicted_class.item()
-            if num_class < 27:
+            if num_class < 26:
                 sign = classes[predicted_class.item()]
             else:
                 answer += str(num_class)
@@ -48,6 +48,3 @@ def video_sign_recognition(path: str) -> str:
 
     return answer
 
-if __name__ == '__main__':
-    result = video_sign_recognition('bot_data/photos/test_B.jpg')
-    print(result)
