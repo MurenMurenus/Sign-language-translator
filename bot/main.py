@@ -4,6 +4,8 @@ from pyngrok import ngrok
 from flask import Flask, request
 
 from photo_sign_recognition import photo_sign_recognition
+from video_sign_recognition import video_sign_recognition
+
 from tg_bot import Bot
 
 
@@ -68,9 +70,11 @@ def receive_update():
                 bot.send_message(chat_id, 'An error occurred, please try again!')
         elif "video" in message:
             try:
-                print(download_media(bot, message))
+                target_path = download_media(bot, message)
+                print(target_path)
                 # TODO сделать ответ бота на видео
-                bot.send_message(chat_id, 'Я что-то предсказал!')
+                result = video_sign_recognition(target_path)
+                bot.send_message(chat_id, f'Распознанный текст: {result}')
             except Exception as e:
                 print(traceback.format_exc())
                 bot.send_message(chat_id, 'An error occurred, please try again!')
