@@ -5,6 +5,15 @@ data/sign_language_dataset/
 data/sign_language_dataset_train/
 data/sign_language_dataset_test/
 data/sign_language_dataset_val
+#bot data
+bot/bot_data/photos/*
+!bot/bot_data/photos/.gitkeep
+bot/bot_data/videos/*
+!bot/bot_data/videos/.gitkeep
+bot/bot_data/video_notes/*
+!bot/bot_data/video_notes/.gitkeep
+bot/bot_data/temp_files
+*.zip
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,0 +1,45 @@
+{
+  "update_id": 84238588,
+  "message": {
+    "message_id": 15,
+    "from": {
+      "id": 953480953,
+      "is_bot": false,
+      "first_name": "Игорь",
+      "username": "einbesserwisser",
+      "language_code": "ru",
+      "is_premium": true
+    },
+    "chat": {
+      "id": 953480953,
+      "first_name": "Игорь",
+      "username": "einbesserwisser",
+      "type": "private"
+    },
+    "date": 1712247880,
+    "video": {
+      "duration": 35,
+      "width": 1280,
+      "height": 720,
+      "file_name": "chair.mp4",
+      "mime_type": "video/mp4",
+      "thumbnail": {
+        "file_id": "AAMCAgADGQEAAw9mDtRI4MwAAf7CfaC2EYKvxjZ9DAADw0cAAjwGeUha3dphRHhxkQEAB20AAzQE",
+        "file_unique_id": "AQADw0cAAjwGeUhy",
+        "file_size": 3864,
+        "width": 320,
+        "height": 180
+      },
+      "thumb": {
+        "file_id": "AAMCAgADGQEAAw9mDtRI4MwAAf7CfaC2EYKvxjZ9DAADw0cAAjwGeUha3dphRHhxkQEAB20AAzQE",
+        "file_unique_id": "AQADw0cAAjwGeUhy",
+        "file_size": 3864,
+        "width": 320,
+        "height": 180
+      },
+      "file_id": "BAACAgIAAxkBAAMPZg7USODMAAH-wn2gthGCr8Y2fQwAA8NHAAI8BnlIWt3aYUR4cZE0BA",
+      "file_unique_id": "AgADw0cAAjwGeUg",
+      "file_size": 5814623
+    }
+  }
+}
