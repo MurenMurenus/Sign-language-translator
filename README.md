@@ -1,19 +1,28 @@
 # Sign language translator model
-Эта модель предназначена для перевода языка жестов в буквы по американской системе.
-Кроме того, написан телеграм бот для распознавания, как ни странно, языка жестов.
-Бот готов к использованию, веса модели в файлике: bot/saved.pt
+This model is designed to translate sign language into letters according to the American system.
+In addition, a telegram bot has been written to recognize, oddly enough, sign language.
+The bot is ready to use, the weights of the model in the file: bot/saved.pt
 
-# Функционал бота:
-* Распознавание букв на фото
-* Распознавание предложений на видео
-* Распознавание предложений в кружочках
+# Bot functionality:
+* Recognition of letters in the photo
+* Recognition of a text on video
+* Recognition of a text in circles
 
 
-# Обучение модели
-Датасеты для обучения не лежат в репозитории, поэтому прочтите data/README.md и сформируйте датасет.
-Обучение можно запустить командой:
+# Model training
+Training datasets are not stored in the repository, so read data/README.md and create a dataset.
+The training can be started with the command:
 ```bash
 python3 train.py
 ```
-Если дообученную модель захочется поставить на место saved.pt, то в evaluate.py есть закоментированная строчка сохранения модели в формате .pt
-Дальше новые веса перемещаются в bot/ и готово!
+If you want to put the completed model in its place saved.pt , then in evaluate.py there is a commented-out line for 
+saving the model in .pt format, then the new weights are moved to bot/ and that's it!
+
+# Initializing telegram bot
+
+If you want to use telegram bot with the model you've trained, do the following:
+* Create a bot using BotFather
+* Go to bot/main.py
+* Change YOUR_NGROK_TOKEN and YOUR_TELEGRAM_BOT_TOKEN to the corresponding tokens
+* Run bot/main.py
+* Enjoy!

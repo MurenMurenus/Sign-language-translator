@@ -10,7 +10,7 @@ from tg_bot import Bot
 
 
 port = '5000'
-ngrok_token = "2edsh9l016jCR72oIlnzGIlXTfi_2MymbkrbwJfKyMLrq6nCj"
+ngrok_token = "YOUR_NGROK_TOKEN"
 
 # Setting an auth token allows us to open multiple tunnels at the same time
 ngrok.set_auth_token(ngrok_token)
@@ -25,7 +25,7 @@ app = Flask(__name__)
 app.config["BASE_URL"] = public_url
 print(app.config["BASE_URL"])
 
-tg_token = "6936786422:AAGYvnc8j-r9cslG-SZM5hiiGybpV8UyFuk"
+tg_token = "YOUR_TELEGRAM_BOT_TOKEN"
 bot = Bot(tg_token, app.config["BASE_URL"])
 drive_dir = Path('bot_data')
 
@@ -66,7 +66,7 @@ def receive_update():
                 target_path = download_media(bot, message)
                 print(target_path)
                 result = photo_sign_recognition(target_path)
-                bot.send_message(chat_id, f'Распознанный символ: {result}')
+                bot.send_message(chat_id, f'Recognized symbol: {result}')
             except Exception as e:
                 print(traceback.format_exc())
                 bot.send_message(chat_id, 'An error occurred, please try again!')
@@ -75,7 +75,7 @@ def receive_update():
                 target_path = download_media(bot, message)
                 print(target_path)
                 result = video_sign_recognition(target_path)
-                bot.send_message(chat_id, f'Распознанный текст: {result}')
+                bot.send_message(chat_id, f'Recognized text: {result}')
             except Exception as e:
                 print(traceback.format_exc())
                 bot.send_message(chat_id, 'An error occurred, please try again!')
@@ -84,7 +84,7 @@ def receive_update():
                 target_path = download_media(bot, message)
                 print(target_path)
                 result = video_sign_recognition(target_path)
-                bot.send_message(chat_id, f'Распознанный текст: {result}')
+                bot.send_message(chat_id, f'Recognized text: {result}')
             except Exception as e:
                 print(traceback.format_exc())
                 bot.send_message(chat_id, 'An error occurred, please try again!')
